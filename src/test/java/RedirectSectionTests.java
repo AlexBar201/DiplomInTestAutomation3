@@ -54,6 +54,7 @@ public class RedirectSectionTests {
     @DisplayName("Редирект к разделу «Булки»")
     @Description("При клике на раздел «Булки» отображаются доступные булочки")
     public void goToBunsTest() {
+        homePage.fillingClick();
         Assert.assertTrue(homePage.isBunsElementDisplayed());
     }
 
@@ -61,6 +62,7 @@ public class RedirectSectionTests {
     @DisplayName("Редирект к разделу «Соусы»")
     @Description("При клике на раздел «Соусы» отображаются доступные соусы")
     public void goToSauceTest() {
+        homePage.fillingClick();
         Assert.assertTrue(homePage.isSauceElementDisplayed());
     }
 
