@@ -1,3 +1,4 @@
+import and.points.AndPoints;
 import apiCreateUser.UserSteps;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
@@ -12,9 +13,14 @@ import pagesStellarBurger.PerAccPage;
 import pagesStellarBurger.RegPage;
 import pagesStellarBurger.ResPassPage;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 public class AuthorizationTests {
 
-    private static final String URL = "https://stellarburgers.nomoreparties.site/";
+    AndPoints andPoints = new AndPoints();
 
     private WebDriver driver;
     private UserSteps user;
@@ -26,17 +32,26 @@ public class AuthorizationTests {
 
     @Before
     public void before() {
-        String browser = System.getProperty("browser","chrome");
-        driver = SetWebDriver.getDriver(browser);
+        // Загрузка настроек из файла properties
+        Properties properties = new Properties();
+        try (InputStream input = new FileInputStream("config.properties")) {
+            properties.load(input);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+
+        // Получаем браузер из свойств или системной переменной
+        String browser = properties.getProperty("browser", System.getenv("BROWSER"));
+        driver = SetWebDriver.getDriver(browser != null ? browser : "chrome");
 
         homePage = new HomePage(driver);
         perAccPage = new PerAccPage(driver);
         regPage = new RegPage(driver);
         resetPage = new ResPassPage(driver);
 
-        user = new UserSteps(URL);
+        user = new UserSteps(andPoints.getURL());
         creation = user.createUser();
-        driver.get(URL);
+        driver.get(andPoints.getURL());
     }
 
     @Test

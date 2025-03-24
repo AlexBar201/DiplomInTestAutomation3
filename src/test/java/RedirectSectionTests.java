@@ -1,3 +1,4 @@
+import and.points.AndPoints;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -9,7 +10,7 @@ import pagesStellarBurger.HomePage;
 import pagesStellarBurger.PerAccPage;
 
 public class RedirectSectionTests {
-    private static final String URL = "https://stellarburgers.nomoreparties.site/";
+    AndPoints andPoints = new AndPoints();
     private WebDriver driver;
 
     HomePage homePage;
@@ -22,7 +23,7 @@ public class RedirectSectionTests {
 
         homePage = new HomePage(driver);
         perAccPage = new PerAccPage(driver);
-        driver.get(URL);
+        driver.get(andPoints.getURL());
     }
 
     @Test

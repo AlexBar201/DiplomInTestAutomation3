@@ -1,3 +1,4 @@
+import and.points.AndPoints;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.After;
@@ -11,7 +12,7 @@ import pagesStellarBurger.RegPage;
 
 public class RegistrationTests {
 
-    private static final String URL = "https://stellarburgers.nomoreparties.site/";
+    AndPoints andPoints = new AndPoints();
 
     private WebDriver driver;
     HomePage homePage;
@@ -27,7 +28,7 @@ public class RegistrationTests {
         perAccPage = new PerAccPage(driver);
         register = new RegPage(driver);
 
-        driver.get(URL);
+        driver.get(andPoints.getURL());
         homePage.personalAccountClick();
         perAccPage.registerButtonClick();
     }
