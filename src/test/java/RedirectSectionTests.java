@@ -6,8 +6,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import pagesStellarBurger.HomePage;
-import pagesStellarBurger.PerAccPage;
+import pages.HomePage;
+import pages.PerAccPage;
 
 public class RedirectSectionTests {
     AndPoints andPoints = new AndPoints();
@@ -63,7 +63,7 @@ public class RedirectSectionTests {
     @DisplayName("Редирект к разделу «Соусы»")
     @Description("При клике на раздел «Соусы» отображаются доступные соусы")
     public void goToSauceTest() {
-        homePage.fillingClick();
+        homePage.sauceClick();
         Assert.assertTrue(homePage.isSauceElementDisplayed());
     }
 

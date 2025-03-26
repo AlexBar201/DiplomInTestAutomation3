@@ -1,4 +1,4 @@
-package apiCreateUser;
+package user;
 
 public class UserJson {
     private final String email;

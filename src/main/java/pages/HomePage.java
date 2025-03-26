@@ -1,4 +1,4 @@
-package pagesStellarBurger;
+package pages;
 
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
@@ -21,7 +21,7 @@ public class HomePage {
     private static final By LOG_IN_BUTTON = By.xpath(".//button[contains(@class,'button_button__33qZ0 ')]");
     private static final By BURGER_CONSTRUCTOR = By.className("BurgerIngredients_ingredients__1N8v2");
     private static final By BUNS = By.xpath(".//span[text()='Булки']");
-    private static final By BUNS_ELEMENT = By.xpath(".//img[@alt='Флюоресцентная булка R2-D3']");
+    private static final By BUNS_ELEMENT = By.xpath(".//img[@class='BurgerIngredient_ingredient__image__3e-07 ml-4 mr-4']");
     private static final By SAUCE = By.xpath(".//span[text()='Соусы']");
     private static final By SAUCE_ELEMENT = By.xpath(".//img[@alt='Соус Spicy-X']");
     private static final By FILLING = By.xpath(".//span[text()='Начинки']");
@@ -79,7 +79,7 @@ public class HomePage {
 
     @Step("Ожидание появления элемента из раздела Булочки")
     public boolean isBunsElementDisplayed() {
-        bunsClick();
+//        bunsClick();
         WebElement element = new WebDriverWait(driver,5)
                 .until(ExpectedConditions.visibilityOfElementLocated(BUNS_ELEMENT));
         return element.isDisplayed();

@@ -1,4 +1,4 @@
-package pagesStellarBurger;
+package pages;
 
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
@@ -8,7 +8,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static pagesStellarBurger.PerAccPage.PA_EMAIL;
+import java.lang.ref.SoftReference;
+
+import static pages.PerAccPage.PA_EMAIL;
 
 public class RegPage {
 
@@ -32,7 +34,7 @@ public class RegPage {
     private static final By ERROR_MESSAGE = By.xpath(".//p[@class = 'input__error text_type_main-default']");
 
     @Step("Вводим имя в поле Name")
-    public void inputName() {
+    public void inputName(String name) {
         driver.findElement(REG_NAME).click();
         new WebDriverWait(driver,5)
                 .until(ExpectedConditions.visibilityOfElementLocated(REG_NAME));
@@ -40,7 +42,7 @@ public class RegPage {
     }
 
     @Step("Вводим почту в поле Email")
-    public void inputEmail() {
+    public void inputEmail(String email) {
         driver.findElement(REG_EMAIL).click();
         new WebDriverWait(driver,5)
                 .until(ExpectedConditions.visibilityOfElementLocated(REG_EMAIL));
@@ -48,7 +50,7 @@ public class RegPage {
     }
 
     @Step("Вводим пароль в поле Пароль")
-    public void inputPassword() {
+    public void inputPassword(String password) {
         driver.findElement(REG_PASSWORD).click();
         new WebDriverWait(driver,5)
                 .until(ExpectedConditions.visibilityOfElementLocated(REG_PASSWORD));
@@ -75,16 +77,16 @@ public class RegPage {
         return error.isDisplayed();
     }
 
-    public void fillRegForm() {
-        inputName();
-        inputEmail();
-        inputPassword();
+    public void fillRegForm(String email, String name, String password) {
+        inputName(name);
+        inputEmail(email);
+        inputPassword(password);
         regButtonClick();
     }
 
     public void wrongRegistration() {
-        inputName();
-        inputEmail();
+        inputName(name);
+        inputEmail(email);
         inputIncorrectPassword();
         regButtonClick();
         isErrorMessageDisplayed();

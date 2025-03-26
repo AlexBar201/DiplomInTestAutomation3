@@ -1,5 +1,5 @@
 import and.points.AndPoints;
-import apiCreateUser.UserSteps;
+import user.UserSteps;
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
@@ -8,10 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import pagesStellarBurger.HomePage;
-import pagesStellarBurger.PerAccPage;
-import pagesStellarBurger.RegPage;
-import pagesStellarBurger.ResPassPage;
+import pages.HomePage;
+import pages.PerAccPage;
 
 import java.io.FileInputStream;
 import java.io.IOException;
